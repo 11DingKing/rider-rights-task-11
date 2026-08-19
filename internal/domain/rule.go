@@ -55,8 +55,7 @@ func (r *Rule) Matches(item *RightsCase) bool {
 		}
 	}
 	if len(r.MatchKeywords) > 0 {
-		kwMatched := MatchAnyKeyword(r.MatchKeywords, item.Keywords)
-		if !kwMatched {
+		if !MatchAnyKeyword(r.MatchKeywords, item.Keywords) {
 			return false
 		}
 		matched = true
