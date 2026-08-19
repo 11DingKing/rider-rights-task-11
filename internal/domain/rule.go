@@ -55,17 +55,7 @@ func (r *Rule) Matches(item *RightsCase) bool {
 		}
 	}
 	if len(r.MatchKeywords) > 0 {
-		kwMatched := false
-		itemKW := make(map[string]bool)
-		for _, k := range item.Keywords {
-			itemKW[k] = true
-		}
-		for _, k := range r.MatchKeywords {
-			if itemKW[k] {
-				kwMatched = true
-				break
-			}
-		}
+		kwMatched := MatchAnyKeyword(r.MatchKeywords, item.Keywords)
 		if !kwMatched {
 			return false
 		}
